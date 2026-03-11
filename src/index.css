@@ -1,0 +1,251 @@
+/* Fonts are now loaded via index.html for better performance (reduces critical request chain) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 36 36% 89%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 0 0% 90%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 0%;
+    --input: 0 0% 0%;
+    --ring: 0 0% 0%;
+
+    --radius: 0rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 0 0% 0%;
+
+    --sidebar-primary: 0 0% 0%;
+
+    --sidebar-primary-foreground: 0 0% 100%;
+
+    --sidebar-accent: 0 0% 90%;
+
+    --sidebar-accent-foreground: 0 0% 0%;
+
+    --sidebar-border: 0 0% 0%;
+
+    --sidebar-ring: 0 0% 0%;
+
+    --chart-1: 12 76% 61%;
+
+    --chart-2: 173 58% 39%;
+
+    --chart-3: 197 37% 24%;
+
+    --chart-4: 43 74% 66%;
+
+    --chart-5: 27 87% 67%;
+
+    --sidebar: 0 0% 98%;
+
+    --font-sans:
+      "Space Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+
+    --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+    --font-mono:
+      "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+    --shadow-2xs: 1px 1px 0px 0px #000000;
+
+    --shadow-xs: 2px 2px 0px 0px #000000;
+
+    --shadow-sm: 3px 3px 0px 0px #000000;
+
+    --shadow: 5px 5px 0px 0px #000000;
+
+    --shadow-md: 8px 8px 0px 0px #000000;
+
+    --shadow-lg: 12px 12px 0px 0px #000000;
+
+    --shadow-xl: 16px 16px 0px 0px #000000;
+
+    --shadow-2xl: 24px 24px 0px 0px #000000;
+
+    --tracking-normal: 0em;
+
+    --spacing: 0.25rem;
+
+    --tooltip: 48 96% 89%;
+
+    --create: 142 69% 58%;
+
+    /* Status Colors - Pastel Palette */
+    --success: 150 60% 85%;
+    --success-foreground: 150 50% 25%;
+
+    --warning: 40 80% 88%;
+    --warning-foreground: 35 80% 30%;
+
+    --info: 200 70% 88%;
+    --info-foreground: 200 60% 30%;
+
+    --negative: 10 70% 90%;
+    --negative-foreground: 10 60% 35%;
+
+    --disabled: 0 0% 96%;
+    --disabled-foreground: 0 0% 35%;
+
+    --progress-bar: 141 44% 28%;
+    --tokens-left: 142 44% 75%;
+
+    /* Toggle active state - darker, saturated green */
+    --toggle-active: 142 71% 45%;
+
+    /* AI Sparkle - universal indicator for AI/credit usage */
+    --ai-sparkle: 139 91% 65%;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 100%;
+    --input: 0 0% 100%;
+    --ring: 0 0% 100%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 100%;
+    --sidebar-ring: 0 0% 100%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar: 0 0% 5%;
+    --radius: 0rem;
+    --tooltip: 48 40% 20%;
+
+    --create: 142 60% 40%;
+
+    /* Status Colors - Pastel Palette (Dark) */
+    --success: 150 40% 30%;
+    --success-foreground: 150 50% 90%;
+
+    --warning: 40 50% 32%;
+    --warning-foreground: 40 70% 90%;
+
+    --info: 200 45% 32%;
+    --info-foreground: 200 60% 90%;
+
+    --negative: 10 50% 30%;
+    --negative-foreground: 10 60% 90%;
+
+    --disabled: 0 0% 20%;
+    --disabled-foreground: 0 0% 65%;
+
+    --progress-bar: 141 44% 20%;
+    --tokens-left: 142 44% 55%;
+
+    /* Toggle active state - darker, saturated green */
+    --toggle-active: 142 69% 40%;
+
+    /* AI Sparkle - universal indicator for AI/credit usage */
+    --ai-sparkle: 139 91% 55%;
+
+    --shadow-2xs: 1px 1px 0px 0px #ffffff;
+    --shadow-xs: 2px 2px 0px 0px #ffffff;
+    --shadow-sm: 3px 3px 0px 0px #ffffff;
+    --shadow: 5px 5px 0px 0px #ffffff;
+    --shadow-md: 8px 8px 0px 0px #ffffff;
+    --shadow-lg: 12px 12px 0px 0px #ffffff;
+    --shadow-xl: 16px 16px 0px 0px #ffffff;
+    --shadow-2xl: 24px 24px 0px 0px #ffffff;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Print styles for Writing Style Report */
+@media print {
+  body > *:not([role="dialog"]),
+  [data-radix-popper-content-wrapper],
+  header,
+  nav,
+  footer {
+    display: none !important;
+  }
+  
+  [role="dialog"] {
+    position: static !important;
+    transform: none !important;
+    max-height: none !important;
+    max-width: none !important;
+    width: 100% !important;
+    height: auto !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: white !important;
+  }
+  
+  [role="dialog"] [data-radix-scroll-area-viewport] {
+    height: auto !important;
+    overflow: visible !important;
+  }
+}

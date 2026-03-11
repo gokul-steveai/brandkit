@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Authenticated / transactional routes
+Disallow: /dashboard
+Disallow: /brand-kits/
+Disallow: /settings
+Disallow: /payment-success
+Disallow: /payment-canceled
+Disallow: /reset-password
+
+# Low-value auth pages
+Disallow: /signin
+Disallow: /signup
+Disallow: /auth
+
+Host: https://brandkitos.com
+Sitemap: https://fupwpcqmyykfiuakjxxc.supabase.co/functions/v1/generate-sitemap

@@ -1,0 +1,124 @@
+project_id = "fupwpcqmyykfiuakjxxc"
+
+[functions.firecrawl-scrape]
+verify_jwt = true
+
+[functions.export-gpt]
+verify_jwt = true
+
+[functions.export-claude-skill]
+verify_jwt = true
+
+[functions.export-markdown]
+verify_jwt = true
+
+[functions.fill-brand-gaps]
+verify_jwt = true
+
+[functions.generate-gap-questions]
+verify_jwt = true
+
+[functions.generate-persona]
+verify_jwt = true
+
+[functions.process-knowledge-file]
+verify_jwt = true
+
+[functions.seed-knowledge-templates]
+verify_jwt = false
+
+[functions.generate-file-metadata]
+verify_jwt = true
+
+[functions.lookup-term]
+verify_jwt = true
+
+[functions.social-profile-scrape]
+verify_jwt = true
+
+[functions.download-profile-image]
+verify_jwt = true
+
+[functions.instagram-analysis]
+verify_jwt = false
+
+[functions.proxy-instagram-image]
+verify_jwt = false
+
+[functions.mcp-server]
+verify_jwt = false
+
+[functions.instagram-scraper]
+verify_jwt = true
+
+[functions.send-email]
+verify_jwt = true
+
+[functions.sendgrid-webhook]
+verify_jwt = false
+
+[functions.log-auth-event]
+verify_jwt = false
+
+[functions.analyze-image]
+verify_jwt = true
+
+[functions.generate-changelog]
+verify_jwt = true
+
+[functions.analyze-source-url]
+verify_jwt = true
+
+[functions.create-checkout]
+verify_jwt = true
+
+[functions.create-token-purchase]
+verify_jwt = true
+
+[functions.check-subscription]
+verify_jwt = true
+
+[functions.customer-portal]
+verify_jwt = true
+
+[functions.verify-payment]
+verify_jwt = true
+
+[functions.process-analysis-report]
+verify_jwt = true
+
+[functions.validate-invitation]
+verify_jwt = false
+
+[functions.accept-invitation]
+verify_jwt = false
+
+[functions.stripe-webhook]
+verify_jwt = false
+
+[functions.generate-messaging-framework-spec]
+verify_jwt = false
+
+[functions.generate-sitemap]
+verify_jwt = false
+
+[functions.partner-api]
+verify_jwt = false
+
+[functions.partner-webhook]
+verify_jwt = false
+
+[functions.add-member-by-email]
+verify_jwt = false
+
+[functions.scrape-competitor]
+verify_jwt = false
+
+[functions.suggest-seo-keywords]
+verify_jwt = false
+
+[functions.oauth-authorize]
+verify_jwt = false
+
+[functions.oauth-token]
+verify_jwt = false
