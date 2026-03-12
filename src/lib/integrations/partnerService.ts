@@ -1,5 +1,5 @@
 import { supabase } from '@/integrations/supabase/client';
-import { sha256Hex } from '@/lib/utils';
+import { generateIntegrationIdentity } from '@/lib/utils';
 
 export interface CreateIntegrationData {
   client_id: string;
@@ -21,11 +21,7 @@ export const createPartnerIntegration = async (data: CreateIntegrationData) => {
 
   const webhookSecret = `${crypto.randomUUID()}-${crypto.randomUUID()}`;
   
-  const identityParts = [data.client_id];
-  if (data.external_user_id) identityParts.push(data.external_user_id);
-  if (data.external_workspace_id) identityParts.push(data.external_workspace_id);
-
-  const integrationIdentity = await sha256Hex(identityParts.join(':'));
+  const integrationIdentity = await generateIntegrationIdentity(data.client_id, data.external_user_id, data.external_workspace_id);
 
   const { data: integration, error } = await supabase
     .from('partner_integrations')
