@@ -205,7 +205,7 @@ Deno.serve(async (req: Request) => {
         const code = crypto.randomUUID();
         const codeHash = await sha256Hex(code);
 
-        const { data: insertedCode, error: codeError } = await supabase
+        const { error: codeError } = await supabase
             .from("oauth_codes")
             .insert({
                 code_hash: codeHash,
