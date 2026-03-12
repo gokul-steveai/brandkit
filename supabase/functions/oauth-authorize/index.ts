@@ -1,8 +1,8 @@
 import { createClient } from "npm:@supabase/supabase-js@2.87.1";
-import { errorResponse } from '../_shared/response.ts';
-import { ACCESS_TOKEN_EXPIRY_MS, isValidUUID, REFRESH_TOKEN_EXPIRY_MS } from "../_shared/auth.ts";
+import { errorResponse, corsHeaders, jsonResponse } from '../_shared/response.ts';
+import { isValidUUID } from "../_shared/auth.ts";
 import { sha256Hex } from "../_shared/hash.ts";
-import { generateIntegrationIdentity, syncIntegrationBrandKits, createTokenPair, revokeRefreshToken } from "../_shared/integration-utils.ts";
+import { generateIntegrationIdentity, syncIntegrationBrandKits } from "../_shared/integration-utils.ts";
 
 const AUTHORIZATION_CODE_EXPIRY_MS = 10 * 60 * 1000; // 10 minutes
 const SUPPORTED_CODE_CHALLENGE_METHOD = 'S256';
@@ -41,6 +41,11 @@ function validateAuthRequest(body: Partial<AuthorizeRequest>, skipBrandKitValida
 }
 
 Deno.serve(async (req: Request) => {
+    // Handle CORS preflight requests
+    if (req.method === 'OPTIONS') {
+        return new Response('ok', { headers: corsHeaders });
+    }
+
     const supabase = createClient(
         Deno.env.get("SUPABASE_URL")!,
         Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
@@ -210,13 +215,14 @@ Deno.serve(async (req: Request) => {
                 code_challenge_method,
                 scopes: scope.split(' '),
                 expires_at: new Date(Date.now() + AUTHORIZATION_CODE_EXPIRY_MS).toISOString()
-            });
+            })
+            .select();
 
         if (codeError) {
             return errorResponse("SERVER_ERROR", "Failed to create authorization code", 500);
         }
 
-        return Response.json({ 
+        return jsonResponse({ 
             code, 
             state
         });

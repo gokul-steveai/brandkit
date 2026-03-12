@@ -1,11 +1,16 @@
 import { createClient } from "npm:@supabase/supabase-js@2.87.1";
-import { errorResponse, jsonResponse } from '../_shared/response.ts';
+import { errorResponse, jsonResponse, corsHeaders } from '../_shared/response.ts';
 import { sha256Hex } from "../_shared/hash.ts";
 import { validateRequiredFields, verifyPKCE, createTokenPair, revokeRefreshToken } from "../_shared/integration-utils.ts";
 import {ACCESS_TOKEN_EXPIRY_MS, SUPPORTED_GRANT_TYPES} from '../_shared/auth.ts'
 
 
 Deno.serve(async (req: Request) => {
+    // Handle CORS preflight requests
+    if (req.method === 'OPTIONS') {
+        return new Response('ok', { headers: corsHeaders });
+    }
+
     const supabase = createClient(
         Deno.env.get("SUPABASE_URL")!,
         Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
@@ -26,6 +31,7 @@ Deno.serve(async (req: Request) => {
             }
 
             const codeHash = await sha256Hex(authorizationCode);
+            
             const { data: authorizationCodeData, error: codeError } = await supabase
                 .from("oauth_codes")
                 .select("partner_integration_id, expires_at, used, code_challenge, scopes")
@@ -37,8 +43,12 @@ Deno.serve(async (req: Request) => {
                 return errorResponse("SERVER_ERROR", "Database error", 500);
             }
 
-            if (!authorizationCodeData || authorizationCodeData.used) {
-                return errorResponse("INVALID_GRANT", "Invalid or used authorization code", 400);
+            if (!authorizationCodeData) {
+                return errorResponse("INVALID_GRANT", "Authorization code not found", 400);
+            }
+            
+            if (authorizationCodeData.used) {
+                return errorResponse("INVALID_GRANT", "Authorization code already used", 400);
             }
 
             if (new Date(authorizationCodeData.expires_at) < new Date()) {
@@ -135,3 +145,4 @@ Deno.serve(async (req: Request) => {
         return errorResponse("SERVER_ERROR", "Internal server error", 500);
     }
 });
+	
