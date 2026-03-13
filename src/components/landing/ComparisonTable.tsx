@@ -19,37 +19,39 @@ const ComparisonTable = () => {
           <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Why Brand Kit OS Beats Traditional Brand Kits</h2>
         </div>
 
-        {/* Scrollable wrapper for mobile */}
-        <div className="mx-auto max-w-4xl overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
-          <div className="border-2 border-border bg-card min-w-[600px]">
-            <Table>
-              <TableHeader>
-                <TableRow className="border-border">
-                  <TableHead className="w-1/3 font-bold">Feature</TableHead>
-                  <TableHead className="w-1/3 text-center font-bold">Traditional Tools</TableHead>
-                  <TableHead className="w-1/3 text-center font-bold text-chart-1">Brand Kit OS</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {comparisons.map((row) => (
-                  <TableRow key={row.feature} className="border-border">
-                    <TableCell className="font-medium">{row.feature}</TableCell>
-                    <TableCell className="text-center text-muted-foreground">
+        {/* Responsive table wrapper - centered */}
+        <div className="flex justify-center">
+          <div className="w-full max-w-4xl overflow-x-auto">
+            <div className="border-2 border-border bg-card">
+              <Table>
+                <TableHeader>
+                  <TableRow className="border-border">
+                    <TableHead className="w-1/3 font-bold">Feature</TableHead>
+                    <TableHead className="w-1/3 text-center font-bold">Traditional Tools</TableHead>
+                    <TableHead className="w-1/3 text-center font-bold text-chart-1">Brand Kit OS</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {comparisons.map((row) => (
+                    <TableRow key={row.feature} className="border-border">
+                      <TableCell className="font-medium">{row.feature}</TableCell>
+                      <TableCell className="text-center text-muted-foreground">
                       <span className="inline-flex items-center gap-2">
-                        <X className="h-4 w-4 text-destructive shrink-0" />
+                          <X className="h-4 w-4 text-destructive shrink-0" />
                         <span className="text-left">{row.traditional}</span>
                       </span>
-                    </TableCell>
-                    <TableCell className="text-center">
+                      </TableCell>
+                      <TableCell className="text-center">
                       <span className="inline-flex items-center gap-2 text-chart-2">
-                        <Check className="h-4 w-4 shrink-0" />
+                          <Check className="h-4 w-4 shrink-0" />
                         <span className="text-left">{row.launch99}</span>
                       </span>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
           </div>
         </div>
         
