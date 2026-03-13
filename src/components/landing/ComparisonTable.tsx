@@ -13,48 +13,50 @@ const comparisons = [
 
 const ComparisonTable = () => {
   return (
-    <section className="py-20 bg-secondary/30">
+    <section className="py-12 sm:py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold sm:text-4xl">Why Brand Kit OS Beats Traditional Brand Kits</h2>
+        <div className="mb-8 sm:mb-12 text-center">
+          <h2 className="mb-4 text-2xl sm:text-3xl lg:text-4xl font-bold">Why Brand Kit OS Beats Traditional Brand Kits</h2>
         </div>
 
-        {/* Scrollable wrapper for mobile */}
-        <div className="mx-auto max-w-4xl overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
-          <div className="border-2 border-border bg-card min-w-[600px]">
-            <Table>
-              <TableHeader>
-                <TableRow className="border-border">
-                  <TableHead className="w-1/3 font-bold">Feature</TableHead>
-                  <TableHead className="w-1/3 text-center font-bold">Traditional Tools</TableHead>
-                  <TableHead className="w-1/3 text-center font-bold text-chart-1">Brand Kit OS</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {comparisons.map((row) => (
-                  <TableRow key={row.feature} className="border-border">
-                    <TableCell className="font-medium">{row.feature}</TableCell>
-                    <TableCell className="text-center text-muted-foreground">
+        {/* Responsive table wrapper */}
+        <div className="flex justify-center">
+          <div className="w-full max-w-4xl overflow-x-auto rounded-lg">
+            <div className="border-2 border-border bg-card">
+              <Table>
+                <TableHeader>
+                  <TableRow className="border-border bg-muted/50">
+                    <TableHead className="font-bold text-xs sm:text-sm py-3 sm:py-4">Feature</TableHead>
+                    <TableHead className="text-center font-bold text-xs sm:text-sm py-3 sm:py-4">Traditional Tools</TableHead>
+                    <TableHead className="text-center font-bold text-xs sm:text-sm py-3 sm:py-4 text-chart-1">Brand Kit OS</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {comparisons.map((row) => (
+                    <TableRow key={row.feature} className="border-border">
+                      <TableCell className="font-medium">{row.feature}</TableCell>
+                      <TableCell className="text-center text-muted-foreground">
                       <span className="inline-flex items-center gap-2">
-                        <X className="h-4 w-4 text-destructive shrink-0" />
+                          <X className="h-4 w-4 text-destructive shrink-0" />
                         <span className="text-left">{row.traditional}</span>
                       </span>
-                    </TableCell>
-                    <TableCell className="text-center">
+                      </TableCell>
+                      <TableCell className="text-center">
                       <span className="inline-flex items-center gap-2 text-chart-2">
-                        <Check className="h-4 w-4 shrink-0" />
+                          <Check className="h-4 w-4 shrink-0" />
                         <span className="text-left">{row.launch99}</span>
                       </span>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
           </div>
         </div>
         
         {/* Mobile scroll hint */}
-        <p className="text-center text-xs text-muted-foreground mt-2 sm:hidden">
+        <p className="text-center text-xs text-muted-foreground mt-3 sm:hidden">
           ← Scroll to see more →
         </p>
       </div>
